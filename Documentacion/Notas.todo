@@ -1,0 +1,72 @@
+
+
+
+Feats específicas:
+  ☐ Pagina principal de listar peliculas de forma linda
+  ☐ Modelo de pasarela de pago
+
+CRUDS Primordiales:
+  ✔ Pelicula (solo programador) @done(19-09-22 13:24)
+  ☐ Usuario (registro abierto)
+  ✔ Función (programarla pues XD) @done(19-09-22 13:24)
+  ☐ Producto
+  ☐ Ingreso almacen
+  ☐ Venta
+
+CRUDS Secundarios:
+  ☐ Sala
+  ☐ Rol
+  ☐ Visualizador logeos
+  ☐ Visualizador errores
+  
+
+Preguntas para hacer a Silvia:
+  ✔ Cada entrada que tenga el nombre de la persona que la usará? o que sea opcional eso  SÍ, OPCIONAL @done(13-09-22 13:18)
+  ☐ Cuando estén validando las entradas en puerta, que se haga como ahora dando nombre y leyendo la lista o con QRs?
+
+
+Procesos:
+  Venta de entradas
+  POS de venta?
+
+
+
+
+
+
+  Mayores de 14
+  Mayores de 18
+  Apta para todas las familias
+
+MURIO EL QR
+
+Inventar un formato para entregarle a los que compren
+  
+
+  Numeracion
+  
+
+Paralelamente al proceso de compra, que se pueda subir la boleta de su compra
+
+
+✔ Las personas trans y nb se registrarán desde el panel de admin, que nos manden correo con sus datos @done(04-01-23 11:57)
+✔ (Añadir Boton queer a la derecha del nombre) @done(04-01-23 11:57)
+
+
+Limitar la factura a 2 hora
+
+
+Pendiente:
+  ✔ que nos manden credenciales los de latinoamerica hosting @done(20-10-22 12:33)
+  que pagoefectivo me responda y saber la comision
+  ☐ Escribirle a pagoefectivo para saber
+  
+  
+
+
+
+Consejo de romina:
+  En el LOGIN, el logo ponerlo en una esquina
+  suavizar borders
+
+Guiarme de https://www.cineplanet.com.pe/cinemas/cp-alcazar
