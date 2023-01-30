@@ -57,7 +57,7 @@ Route::group(['middleware'=>"ValidarSesion"],function()
     /* PELICULA */
     Route::get('/SalasDuplas/Listar','SalaDuplaController@ListarSalas')->name('SalaDupla.Listar');
     Route::get('/SalasDuplas/CrearNueva','SalaDuplaController@CrearNueva')->name('SalaDupla.CrearNueva');
-    Route::get('/SalasDuplas/Ver/{id}','SalaDuplaController@Ver')->name('SalaDupla.Ver');
+    Route::get('/SalasDuplas/Ver/{codigoUnico}','SalaDuplaController@Ver')->name('SalaDupla.Ver');
     
  
 

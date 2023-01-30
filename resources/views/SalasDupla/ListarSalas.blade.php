@@ -56,7 +56,7 @@
             </td>
             
             <td>
-              <a href="{{route('SalaDupla.Ver',$sala->getId())}}" class="btn btn-warning btn-xs btn-icon icon-left">
+              <a href="{{route('SalaDupla.Ver',$sala->codigoUnico)}}" class="btn btn-warning btn-xs btn-icon icon-left">
                 <i class="fas fa-eye"></i>
               </a>
             </td>

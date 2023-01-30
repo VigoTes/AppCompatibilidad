@@ -181,5 +181,12 @@ class UsuarioController extends Controller
     }
 
 
+    public function guardarMisPuntajes(Request $request){
+
+        
+
+      
+    }
+
 
 }
