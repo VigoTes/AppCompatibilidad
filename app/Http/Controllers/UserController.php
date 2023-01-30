@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Cliente;
 use Illuminate\Support\Carbon;
 use App\Carrito;
+use App\LenguajeAmor;
 use App\PersonaReniec;
+use App\PuntuacionLenguaje;
 use Exception;
 use Illuminate\Support\Facades\DB;
 class UserController extends Controller
@@ -159,10 +161,40 @@ class UserController extends Controller
         
         if(is_null(Auth::id()))
             return redirect()->route('user.verLogin');
+
+        
  
         return view('Bienvenido');
     }
 
+    public function MisLenguajes(){
+      $listaLenguajes = LenguajeAmor::All();
+      $user = Usuario::getLogeado();
+      
+      $puntuacionActual = PuntuacionLenguaje::where('codUsuario',$user->codUsuario)->get();
+
+
+
+      return view('Usuarios.MisLenguajes',compact('listaLenguajes','puntuacionActual'));
+
+    }
+
+    public function GuardarMisLenguajes(Request $request){
+
+
+      $puntajes = json_decode($request->json_puntajes);
+      $user = Usuario::getLogeado();
+ 
+      foreach ($puntajes as $puntaje) {
+        $puntuacion = PuntuacionLenguaje::where('codUsuario',$user->codUsuario)->where('codLenguaje',$puntaje->codLenguaje)->first();
+        $puntuacion->puntajeDar = $puntaje->puntajeDar;
+        $puntuacion->puntajeRecibir = $puntaje->puntajeRecibir;
+        $puntuacion->save();
+      }
+
+      return redirect()->route('user.MisLenguajes')->with('datos',"Sus puntajes fueron actualizados exitosamente");
+
+    }
 
 
     

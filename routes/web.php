@@ -22,6 +22,10 @@ Route::post('/ingresar', 'UserController@logearse')->name('user.logearse'); //po
 
 Route::get('/cerrarSesion','UserController@cerrarSesion')->name('user.cerrarSesion');
 
+Route::get('/MisLenguajes','UserController@MisLenguajes')->name('user.MisLenguajes');
+Route::post('/MisLenguajes/Save','UserController@GuardarMisLenguajes')->name('user.GuardarMisLenguajes');
+
+
 Route::get('/usuarios/consultarPorDNIYUsuario/{dni}','UsuarioController@consultarPorDNIYUsuario')->name('consultarPorDNIYUsuario');
 Route::get('/usuarios/verificarExistenciaUsuarioConDNI/{dni}','UsuarioController@verificarExistenciaUsuarioConDNI')->name('verificarExistenciaUsuarioConDNI');
 Route::post('/usuarios/crearCuentaPorDefecto','UsuarioController@crearCuentaPorDefecto')->name('usuarios.crearCuentaPorDefecto');

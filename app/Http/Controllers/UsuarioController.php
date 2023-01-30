@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Configuracion;
+use App\LenguajeAmor;
 use App\LogeoHistorial;
 use App\PersonaReniec;
+use App\PuntuacionLenguaje;
 use App\RespuestaAPI;
 use App\User;
 use App\Usuario;
@@ -47,19 +49,32 @@ class UsuarioController extends Controller
             DB::beginTransaction();
             
             $usuario=new Usuario();
-            $usuario->email=$request->email;
+            $usuario->usuario=$request->usuario;
             $usuario->dni=$request->dni;
             $usuario->nombres=$request->nombres;
             $usuario->apellidos=$request->apellidos;
-            $usuario->codRol = 2;
+            $usuario->codigoUnico="adadada";
+            
+            $usuario->verificado=0;
+            
+            $usuario->codRol = 1;
             
             $usuario->password=hash::make($request->password1);
             $usuario->save();
             
+            $lenguajes = LenguajeAmor::All();
+            foreach ($lenguajes as $lenguaje) {
+              $len = new PuntuacionLenguaje();
+              $len->codUsuario = $usuario->getId();
+              $len->codLenguaje = $lenguaje->getId();
+              $len->puntajeDar = 0;
+              $len->puntajeRecibir = 0;
+              $len->save();
+            }
 
             db::commit();
             return redirect()->route('Usuarios.Listar')
-                ->with('datos','Usuario '.$usuario->email.' registrado exitosamente');
+                ->with('datos','Usuario '.$usuario->usuario.' registrado exitosamente');
             
         }catch (\Throwable $th) {
             throw $th;
