@@ -131,7 +131,7 @@ class UserController extends Controller
         //ya está creado el usuario, ahora iniciamos su sesión
 
         if(Auth::attempt($request->only('usuario','password'))){
-          return redirect()->route('user.MisLenguajes')->with('datos',"Su cuenta ha sido creada exitosamente.");
+          return redirect()->route('user.verPaso2')->with('datos',"Su cuenta ha sido creada exitosamente.");
         }else{
           throw new Exception("Por alguna razón el logeo fue incorrecto");
         }
@@ -158,19 +158,29 @@ class UserController extends Controller
 
 
     public function verRegistrar(){
+        
+        return view('Pasos.Paso1');
+    }
 
-        return view('Registro');
+    public function verPaso2(){
+      $listaLenguajes = LenguajeAmor::All();
+      $user = Usuario::getLogeado();
+      
+      $puntuacionActual = PuntuacionLenguaje::where('codUsuario',$user->codUsuario)->get();
+
+      
+      return view('Pasos.Paso2',compact('listaLenguajes','puntuacionActual'));
     }
 
 
     public function home(){
-        
+      
       if(is_null(Auth::id()))
-        return redirect()->route('user.Registrarme');
+        return redirect()->route('user.verLanding');
 
-  
+      
  
-        return view('Bienvenido');
+      return view('Bienvenido');
     }
 
     public function MisLenguajes(){
@@ -181,7 +191,7 @@ class UserController extends Controller
 
 
 
-      return view('Usuarios.MisLenguajes',compact('listaLenguajes','puntuacionActual'));
+      return view('Reusables.MisLenguajes',compact('listaLenguajes','puntuacionActual'));
 
     }
 
@@ -197,8 +207,8 @@ class UserController extends Controller
         $puntuacion->puntajeRecibir = $puntaje->puntajeRecibir;
         $puntuacion->save();
       }
-
-      return redirect()->route('user.MisLenguajes')->with('datos',"Sus puntajes fueron actualizados exitosamente");
+      
+      return redirect()->route('user.verPaso3')->with('datos',"Sus puntajes fueron actualizados exitosamente");
 
     }
 

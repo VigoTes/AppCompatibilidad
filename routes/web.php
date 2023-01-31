@@ -21,9 +21,14 @@ Route::post('/ingresar', 'UserController@logearse')->name('user.logearse'); //po
 
 Route::get('/cerrarSesion','UserController@cerrarSesion')->name('user.cerrarSesion');
 
-Route::get('/MisLenguajes','UserController@MisLenguajes')->name('user.MisLenguajes');
+Route::get('/Config/MisLenguajes','CompatibilidadController@verEditarMisLenguajes')->name('user.MisLenguajes');
 Route::post('/MisLenguajes/Save','UserController@GuardarMisLenguajes')->name('user.GuardarMisLenguajes');
-Route::get('/Registrarme','UserController@verRegistrar')->name('user.Registrarme');
+
+
+Route::get('/Landing','CompatibilidadController@verLanding')->name('user.verLanding');
+Route::get('/Step1','UserController@verRegistrar')->name('user.verPaso1');
+Route::get('/Step2','UserController@verPaso2')->name('user.verPaso2');
+Route::get('/Step3','CompatibilidadController@verPaso3')->name('user.verPaso3');
 
 Route::get('/usuarios/consultarPorDNIYUsuario/{dni}','UsuarioController@consultarPorDNIYUsuario')->name('consultarPorDNIYUsuario');
 Route::get('/usuarios/verificarExistenciaUsuarioConDNI/{dni}','UsuarioController@verificarExistenciaUsuarioConDNI')->name('verificarExistenciaUsuarioConDNI');

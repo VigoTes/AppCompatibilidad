@@ -48,4 +48,11 @@ class Usuario extends Model
     public function getRol() : Rol{
       return Rol::findOrFail($this->codRol);
     }
+
+    
+    public function getLinkReferido(){
+      $app_url = Configuracion::getAppURL();
+
+      return $app_url.'/ref/'.$this->codigoUnico;
+    }
 }

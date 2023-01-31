@@ -1,29 +1,15 @@
-@extends('Layout.Plantilla')
 
-@section('titulo')
-  Crear Película
-@endsection
 
-@section('tiempoEspera')
- 
-@endsection
-
-@section('contenido')
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<div >
-    <p class="h2" style="text-align: center">
-        Mis lenguajes
-    </p>
-</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    
 
     @include('Layout.MensajeEmergenteDatos')
 
  
-    @csrf
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-5 col-12 p-1">
+ 
+    <div class="row mt-2">
+         
+        <div class="col-lg-6 col-12 p-1">
           <div class="card mx-2 h-100">
             <div class="card-header ui-sortable-handle" style="cursor: move;">
                 <div class="d-flex flex-row">
@@ -85,7 +71,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-12 p-1">
+        <div class="col-lg-6 col-12 p-1">
 
  
           <div class="card mx-2  h-100">
@@ -153,7 +139,7 @@
 
         </div>
        
-        <div class="col-lg-1"></div>
+        
     </div>
       
  
@@ -182,8 +168,6 @@
  
 
 
-@endsection
-
 {{-- ************************************************************************************************************* --}}
 {{-- ************************************************************************************************************* --}}
 {{-- ************************************************************************************************************* --}}
@@ -200,7 +184,6 @@
 
 @include('Layout.EstilosPegados')
 @include('Layout.ValidatorJS')
-@section('script')
 
 <script type="application/javascript">
   
@@ -381,8 +364,8 @@
 
 </script>
  
-@endsection
-@section('estilos')
+
+
 <style>
   .puntaje_item{
     color: #ffffff;
@@ -450,4 +433,4 @@
 
 
 </style>
-@endsection
+

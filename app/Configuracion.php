@@ -229,7 +229,11 @@ class Configuracion extends Model
         return $par->valor == "true";
     }
     
-
+    public static function getAppURL(){
+      return env('APP_URL');
+    }
+    
+    
 
     public static function getUrlManual(){
         if(Configuracion::enProduccion())
