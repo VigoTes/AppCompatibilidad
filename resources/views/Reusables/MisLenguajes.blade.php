@@ -1,5 +1,5 @@
 
-
+  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     
 
@@ -180,7 +180,7 @@
 {{-- ************************************************************************************************************* --}}
 {{-- ************************************************************************************************************* --}}
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
 
 @include('Layout.EstilosPegados')
 @include('Layout.ValidatorJS')
@@ -200,6 +200,7 @@
   
   function mounted(){
     inicializarPuntajes();
+     
 
   }
 

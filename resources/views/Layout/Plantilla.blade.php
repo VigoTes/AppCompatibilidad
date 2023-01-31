@@ -5,18 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> @yield('titulo') </title>
   
-
-  {{-- Cambiar esto por una url d --}}
-
   <link rel="shortcut icon" href="/img/LogoCedepas.png" type="image/png">
-  
   
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Font Awesome -->
  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
- <link rel="stylesheet" href="/css/siderbarstyle.css">
+ 
  <link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
  <link rel="stylesheet" href="/select2/bootstrap-select.min.css">
  
@@ -30,6 +26,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+  @include('css.sidebarstyle')
 
   <style>
     .fondoPlomoCircular{
@@ -83,9 +80,19 @@
       width: 100%;
       height: 100%;
       z-index: 9999;
-      background: url('/img/espera.gif') 50% 50% no-repeat rgb(249,249,249);
-      background-size: 10%;
+      display: inline-flex;
+      text-align: center;
+      background: 50% 50% no-repeat rgb(249,249,249);
       opacity: .8;
+      flex-direction: column-reverse;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+    .loader .lds-spinner{
+ 
+ 
+      margin-top: auto;
+      margin-bottom: auto;
     }
 
 

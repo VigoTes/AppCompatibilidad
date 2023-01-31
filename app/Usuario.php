@@ -39,6 +39,11 @@ class Usuario extends Model
     public function esAdmin() : bool{
       return $this->codRol == 1; //si es admin
     }
+    public function estaVerificado() : bool{
+      return $this->verificado == 1; //si es admin
+    }
+
+
 
     public function getPuntuacionesLenguajes(){
       return PuntuacionLenguaje::where('codUsuario',$this->codUsuario)->get();

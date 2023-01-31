@@ -5,19 +5,24 @@
 <div class="flex-column mx-3 text-right fontSize11  d-none d-sm-flex">
 
   <span class="mb--1 font-weight-bold" title="Nombre de usuario">
-    {{$userLogeado->email}}
+    {{$userLogeado->usuario}}
   </span>
   <span>
-    {{$userLogeado->getNombreCompleto()}}
+    @if($userLogeado->estaVerificado())
+      Verificado  
+    @else
+      No Verificado
+    @endif
+ 
   </span>
 </div>
 <li class="nav-item dropdown">
   
     {{-- CABECERA DE TODA LA NOTIF  --}}
     <a class="nav-link btn btn-info" style="color:beige" data-toggle="dropdown" href="#">
-      <i class="far fa-user"></i>
-      Cuenta
       
+      Mi Cuenta
+      <i class="ml-1 far fa-user"></i>      
     </a>
 
 

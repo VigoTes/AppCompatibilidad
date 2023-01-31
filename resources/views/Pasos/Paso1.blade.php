@@ -11,7 +11,7 @@
     <div class="col-sm-6">
 
 
-      <div class="mb-5">
+      <div class="mb-3">
         <h2 class="">
           Compatibilidad según lenguajes del amor
         </h2>

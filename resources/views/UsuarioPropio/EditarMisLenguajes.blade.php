@@ -3,12 +3,16 @@
     App de Compatibiliad
 @endsection
 
+ 
+@include('Reusables.Loader')
+
+
 @section('contenido')
 
 <div class="text-center">
   <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 col-12">
 
       <div class="step-title">
         Edita tus lenguajes de amor
@@ -18,7 +22,7 @@
 
 
     </div>
-    <div class="col-sm-3"></div>
+    <div class="col-lg-1"></div>
   </div>
 
 
@@ -30,3 +34,12 @@
 @section('estilos')
   @include('Reusables.EstilosPasos')
 @endsection
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function(){
+    $(".loader").hide();
+  }, false);
+  
+
+</script>
