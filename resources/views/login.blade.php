@@ -64,7 +64,7 @@
             
               ¿No tienes cuenta? 
 
-              <a href="{{route('user.VerRegistrarme')}}">
+              <a href="{{route('user.Registrarme')}}">
                 <span class="linkRegistrarme">
                   Registrarme
                 </span>

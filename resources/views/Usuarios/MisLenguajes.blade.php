@@ -22,8 +22,8 @@
  
     @csrf
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-5">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5 col-12 p-1">
           <div class="card mx-2 h-100">
             <div class="card-header ui-sortable-handle" style="cursor: move;">
                 <div class="d-flex flex-row">
@@ -53,10 +53,10 @@
                             {{$lenguaje->nombreAparente}}
                           </span>
                         </div>
-                        <div class="col-10">
+                        <div class="col-8 col-md-10">
                           <input type="range" class="slider" value="0" oninput="changeSliderDar(this.value,{{$LenId}})" id="slider_dar_{{$LenId}}" min="0" max="100" step="1">
                         </div>
-                        <div class="col-2">
+                        <div class="col-4 col-md-2">
                           <span for="" class="puntaje_item" id="span_valor_dar_{{$LenId}}">
                             0
                           </span>
@@ -69,8 +69,8 @@
                 <div class="row mt-4">
                   <div class="col-12 text-right">
                     <div class="row">
-                      <div class="col-10"></div>
-                      <div class="col-2 text-center">
+                      <div class="col-8 col-md-10"></div>
+                      <div class="col-4 col-md-2 text-center">
                         <span id="total_dar" class="puntaje_total">
                           0
                         </span>
@@ -85,7 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="col-5">
+        <div class="col-lg-5 col-12 p-1">
 
  
           <div class="card mx-2  h-100">
@@ -116,10 +116,10 @@
                           {{$lenguaje->nombreAparente}}
                         </span>
                       </div>
-                      <div class="col-10">
+                      <div class="col-8 col-md-10">
                         <input type="range" class="slider" value="0" oninput="changeSliderRecibir(this.value,{{$LenId}})" id="slider_recibir_{{$LenId}}" min="0" max="100" step="1">
                       </div>
-                      <div class="col-2">
+                      <div class="col-4 col-md-2">
                         <span for="" class="puntaje_item" id="span_valor_recibir_{{$LenId}}">
                           0
                         </span>
@@ -132,8 +132,8 @@
               <div class="row mt-4">
                 <div class="col-12 text-right">
                   <div class="row">
-                    <div class="col-10"></div>
-                    <div class="col-2 text-center">
+                    <div class="col-8 col-md-10"></div>
+                    <div class="col-4 col-md-2 text-center">
                       <span id="total_recibir" class="puntaje_total">
                         0
                       </span>
@@ -153,29 +153,19 @@
 
         </div>
        
-        <div class="col-1"></div>
+        <div class="col-lg-1"></div>
     </div>
       
  
     <div class="d-flex flex-row m-4">
-        <div class="">
-          
-
-            <a href="{{route('SalaDupla.Listar')}}" class='btn btn-info '>
-                <i class="fas fa-arrow-left"></i>
-                Regresar al Menú
-            </a>
-
-
-
-        </div>
+         
         <div class="ml-auto">
 
             
           <form action="{{route('user.GuardarMisLenguajes')}}" method="POST" name="formLenguajes">
             @csrf
 
-            <input type="text" name="json_puntajes" id="json_puntajes">
+            <input type="hidden" name="json_puntajes" id="json_puntajes">
 
             <button type="button" onclick="clickGuardar()" class="btn btn-primary ml-auto">
               <i class="fas fa-save"></i>

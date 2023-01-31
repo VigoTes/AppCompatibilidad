@@ -104,28 +104,34 @@ class UserController extends Controller
     public function registrarme(Request $request){
       try{
         DB::beginTransaction();
-        
-        $persona = new PersonaReniec($request->dni);
-        
         $usuario=new Usuario();
-        $usuario->email=$request->email;
-        $usuario->dni=$persona->dni;
-        $usuario->apellidos=$persona->apellidos;
-        $usuario->nombres=$persona->nombres;
-
+        $usuario->usuario=$request->usuario;
+        $usuario->password=hash::make($request->password);
         $usuario->codRol = 2;
         $usuario->verificado = 0;
-        
-        $usuario->password=hash::make($request->password);
+        $usuario->codigoUnico = "temp";
+        $usuario->save();
+
+        $usuario->codigoUnico = uniqid($usuario->codUsuario."_",false);
         $usuario->save();
         
+        
+        $lenguajes = LenguajeAmor::All();
+        foreach ($lenguajes as $lenguaje) {
+          $len = new PuntuacionLenguaje();
+          $len->codUsuario = $usuario->getId();
+          $len->codLenguaje = $lenguaje->getId();
+          $len->puntajeDar = 0;
+          $len->puntajeRecibir = 0;
+          $len->save();
+        }
 
+        
         db::commit();
         //ya está creado el usuario, ahora iniciamos su sesión
 
         if(Auth::attempt($request->only('usuario','password'))){
-
-          return redirect()->route('VerCartelera')->with('datos',"Su cuenta ha sido creada exitosamente.");
+          return redirect()->route('user.MisLenguajes')->with('datos',"Su cuenta ha sido creada exitosamente.");
         }else{
           throw new Exception("Por alguna razón el logeo fue incorrecto");
         }
@@ -151,18 +157,18 @@ class UserController extends Controller
 
 
 
-    public function verRegistrar($tipoReg){
-        return view('registrar',compact('tipoReg'));
+    public function verRegistrar(){
+
+        return view('Registro');
     }
 
 
     public function home(){
         
-        
-        if(is_null(Auth::id()))
-            return redirect()->route('user.verLogin');
+      if(is_null(Auth::id()))
+        return redirect()->route('user.Registrarme');
 
-        
+  
  
         return view('Bienvenido');
     }

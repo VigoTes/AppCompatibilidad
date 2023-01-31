@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UserController@home')->name('user.home');
 
 Route::get('/login', 'UserController@verLogin')->name('user.verLogin'); //para desplegar la vista del Login
-Route::get('/registrarme', 'UserController@VerRegistrarme')->name('user.VerRegistrarme'); //para desplegar la vista del Login
 
 Route::post('/registrarUsuario', 'UserController@registrarme')->name('user.registrarUsuario'); //para desplegar la vista del Login
 
@@ -24,7 +23,7 @@ Route::get('/cerrarSesion','UserController@cerrarSesion')->name('user.cerrarSesi
 
 Route::get('/MisLenguajes','UserController@MisLenguajes')->name('user.MisLenguajes');
 Route::post('/MisLenguajes/Save','UserController@GuardarMisLenguajes')->name('user.GuardarMisLenguajes');
-
+Route::get('/Registrarme','UserController@verRegistrar')->name('user.Registrarme');
 
 Route::get('/usuarios/consultarPorDNIYUsuario/{dni}','UsuarioController@consultarPorDNIYUsuario')->name('consultarPorDNIYUsuario');
 Route::get('/usuarios/verificarExistenciaUsuarioConDNI/{dni}','UsuarioController@verificarExistenciaUsuarioConDNI')->name('verificarExistenciaUsuarioConDNI');

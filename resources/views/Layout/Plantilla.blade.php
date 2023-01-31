@@ -207,19 +207,16 @@
       
     <nav class="navbar navbar-expand navbar-white navbar-light pl-4">
        
-
-      <ul class="navbar-nav mr-auto"  >
-        <a class="linkMenu" href="{{route('VerCartelera')}}">
-          Cartelera
-        </a>
-        <a class="linkMenu" href="{{route('VerNosotros')}}">
-          Nosotros
-        </a>
-        <a class="linkMenu" href="{{route('VerContactanos')}}">
-          Contáctanos
-        </a>
-        
-      </ul>
+      @if($haySesionIniciada)
+          
+        <ul class="navbar-nav mr-auto"  >
+          <a class="linkMenu" href="{{route('user.MisLenguajes')}}">
+            Mis Lenguajes
+          </a>
+          
+          
+        </ul>
+      @endif
         
 
 
