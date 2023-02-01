@@ -22,6 +22,41 @@ class Amistad extends Model
       return Usuario::findOrFail($this->codUsuarioB);
     }
 
+
+    /* solo retorna el valor, no guarda nada */
+    public function calcularIndice() : int {
+
+      $usuarioA = $this->getUsuarioA();
+      $usuarioB = $this->getUsuarioB();
+
+
+      $lenguajes = LenguajeAmor::All();
+  
+      $total = 0;
+      foreach ($lenguajes as $lenguaje) {
+  
+        $puntuacionA = PuntuacionLenguaje::where('codUsuario',$usuarioA->codUsuario)->where('codLenguaje',$lenguaje->codLenguaje)->first();
+        $puntuacionB = PuntuacionLenguaje::where('codUsuario',$usuarioB->codUsuario)->where('codLenguaje',$lenguaje->codLenguaje)->first();
+        
+        $acum_A_B = $puntuacionA->puntajeDar * $puntuacionB->puntajeRecibir;
+        $acum_B_A = $puntuacionB->puntajeDar * $puntuacionA->puntajeRecibir;
+        
+        $total+= $acum_A_B + $acum_B_A;
+      }
+  
+      $total = $total/100;
+  
+      // NORMALIZAMOS
+      return static::normalizar($total);
+    }
+
+    public static function normalizar($x){
+      return 10*sqrt($x);
+  
+    }
+
+
+
     public static function getAmigosDeUsuario(int $codUsuario){
 
       

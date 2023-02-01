@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Amistad;
+use App\Debug;
 use App\Entrada;
 use App\Fecha;
 use App\Funcion;
@@ -108,6 +110,19 @@ class FlujoController extends Controller
     $user = Usuario::getLogeado();
     
     $puntuacionActual = PuntuacionLenguaje::where('codUsuario',$user->codUsuario)->get();
+    if(count($puntuacionActual) == 0){/* creamos */
+      $lenguajes = LenguajeAmor::All();
+      foreach ($lenguajes as $lenguaje) {
+        $len = new PuntuacionLenguaje();
+        $len->codUsuario = $user->getId();
+        $len->codLenguaje = $lenguaje->getId();
+        $len->puntajeDar = 0;
+        $len->puntajeRecibir = 0;
+        $len->save();
+      }
+
+      $puntuacionActual = PuntuacionLenguaje::where('codUsuario',$user->codUsuario)->get();
+    }
 
     return view('UsuarioPropio.EditarMisLenguajes',compact('listaLenguajes','puntuacionActual'));
 
@@ -126,6 +141,15 @@ class FlujoController extends Controller
       $puntuacion->puntajeDar = $puntaje->puntajeDar;
       $puntuacion->puntajeRecibir = $puntaje->puntajeRecibir;
       $puntuacion->save();
+    }
+
+    /* actualizamos todos los indices de las amistades donde aparece este*/
+    $amistades = Amistad::where('codUsuarioA',$user->codUsuario)->orWhere('codUsuarioB',$user->codUsuario)->get();
+    foreach ($amistades as $amistad) {
+      
+      $amistad->indiceObtenido = $amistad->calcularIndice();
+      $amistad->save();
+
     }
     
     return redirect()->route('Flujo.VerPaso3')->with('datos',"Sus puntajes fueron actualizados exitosamente");

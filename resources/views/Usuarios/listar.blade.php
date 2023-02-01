@@ -39,7 +39,7 @@
         @foreach($usuarios as $itemUsuario)
             <tr>
                 <td>{{$itemUsuario->codUsuario}}</td>
-                <td>{{$itemUsuario->email}}</td>
+                <td>{{$itemUsuario->usuario}}</td>
                 <td>
                   {{$itemUsuario->getRol()->nombre}}
                 </td>

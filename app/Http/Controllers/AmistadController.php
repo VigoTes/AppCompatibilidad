@@ -57,7 +57,7 @@ class AmistadController extends Controller
 
     $solicitudes_enviadas = view('Amistad.Inv_SolicitudesEnviadas',compact('listaSolicitudesAmistadEnviadas'))->render();
     $solicitudes_recibidas = view('Amistad.Inv_SolicitudesRecibidas',compact('listaSolicitudesAmistadRecibidas'))->render();
-    $mis_amigos = view('Amistad.Inv_Amigos',compact('listaAmigos'))->render();
+    $mis_amigos = view('Amistad.Inv_Amigos',compact('listaAmigos','usuario'))->render();
     
 
     return [
@@ -153,6 +153,8 @@ class AmistadController extends Controller
         $amistad->save();
         $solicitud->fechaHoraAceptacion = new Carbon();
 
+        $amistad->indiceObtenido = $amistad->calcularIndice();
+        $amistad->save();
         
 
       }else{

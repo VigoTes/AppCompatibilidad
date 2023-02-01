@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Amistad;
 use Illuminate\Http\Request;
 use App\User;
 use App\Usuario;
@@ -121,9 +122,58 @@ class UserController extends Controller
       if(is_null(Auth::id()))
         return redirect()->route('Flujo.VerLanding');
 
-      
+      /* 
+      Grafico total de amistades
+      */
+
+      $listaUsuarios = Usuario::All();
+      $listaAmistades = Amistad::All();
+
+
+      $array_nodes = [];
+      foreach ($listaUsuarios as $usuario) {
+        $array_nodes[] = [
+          'data' => [
+            'id' => $usuario->codUsuario,
+            'usuario' => $usuario->usuario,
+          ]
+        ];
+      }
+      $array_edges =  [];
+      foreach ($listaAmistades as $amistad) {
+        $array_edges[] = [
+          'data' => [
+            'source' => $amistad->codUsuarioA,
+            'target' => $amistad->codUsuarioB,
+            'value' => $amistad->indiceObtenido,
+            'opacity' => ($amistad->indiceObtenido+15)/100,
+            'color' => static::generarColorSegunIndice($amistad->indiceObtenido)
+          ]
+        ];
+      }
+
+      $data = [
+        'nodes' => $array_nodes,
+        'edges' => $array_edges
+      ];
  
-      return view('Bienvenido');
+      return view('Bienvenido',compact('data'));
+    }
+
+    /* el color va de azul completo rgb(0,0,255) a rojo intenso rgb(255,0,0) */
+    public static function generarColorSegunIndice(int $indice){
+
+      if($indice > 50){ //gradiente de rojo
+        $rojo = $indice*2.55;
+        $azul = 0;
+        
+      }else{ //gradiente de azul
+        $rojo = 0;
+        $azul = 255 - $rojo;
+        
+      }
+
+      return "rgb($rojo,0,$azul)";
     }
 
     public function MisLenguajes(){

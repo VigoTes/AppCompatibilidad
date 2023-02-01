@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Cliente;
+use Error;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use League\CommonMark\Extension\SmartPunct\PunctuationParser;
 
@@ -52,6 +54,24 @@ class Usuario extends Model
       return PuntuacionLenguaje::where('codUsuario',$this->codUsuario)->get();
     }
 
+    public function getIndiceCompatibilidad($codUsuario){
+      
+
+      $lista1 = Amistad::where('codUsuarioA',$this->codUsuario)->where('codUsuarioB',$codUsuario)->get();
+      if(count($lista1) != 0){
+        $amistad = $lista1[0];
+        return $amistad->indiceObtenido;
+      }
+
+
+      $lista2 = Amistad::where('codUsuarioB',$this->codUsuario)->where('codUsuarioA',$codUsuario)->get();
+      if(count($lista2) != 0){
+        $amistad = $lista2[0];
+        return $amistad->indiceObtenido;
+      }
+      
+      throw new Exception("No hay amistad entre los usuarios indicados");
+    }
 
     public function getRol() : Rol{
       return Rol::findOrFail($this->codRol);

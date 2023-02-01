@@ -7,8 +7,8 @@
 
 <div class="text-center">
   <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
+ 
+    <div class="col-sm-12">
      
       <h3>
         Mi gráfico de contactos
@@ -17,7 +17,7 @@
       <div id="cy" class="graph-container"></div>
       
     </div>
-    <div class="col-sm-3"></div>
+    
   </div>
 
 
@@ -38,7 +38,7 @@
     }
 
     #cy {
-      width: 800px;
+   
       height: 600px;
       text-align: left;
     }
@@ -73,10 +73,11 @@
 {{-- https://js.cytoscape.org/ --}}
 {{-- https://ivis-at-bilkent.github.io/cytoscape.js-avsdf/ --}}
 <script>
-  document.addEventListener('DOMContentLoaded', function(){
+  const GraphData = @json($data);
 
-    const NodeStyle = {
-      'label': 'data(name)',
+
+  const NodeStyle = {
+      'label': 'data(usuario)',
       'text-valign': 'center',
       'color': '#0000FF',
       'background-color': '#3a7ecf'
@@ -84,11 +85,15 @@
 
     const ConectorStyle = {
       'width': 2,
-      'line-color': '#3a7ecf',
-      'opacity': 0.5,
+      'line-color': 'data(color)',
+      'opacity': 'data(opacity)',
       label:'data(value)'
     }
 
+
+  document.addEventListener('DOMContentLoaded', function(){
+
+    
 
     var cy = window.cy = cytoscape({
       container: document.getElementById('cy'),
@@ -112,32 +117,7 @@
 
       ],
 
-      elements: {
-        nodes: [
-          { data: { id: 'v1', name:"diego", weight: 1} },
-          { data: { id: 'v2', name:"ernesto", weight: 2} },
-          { data: { id: 'v3', name:"ingri", weight: 3} },
-          { data: { id: 'v4', name:"cuack", weight: 4} },
-          { data: { id: 'v5', name:"mau", weight: 5} },
-          { data: { id: 'v6', name:"julio", weight: 6} },
-          { data: { id: 'v7', name:"rodri", weight: 7} }
-        ],
-        edges: [
-          
-          { data: { source: 'v1', target: 'v4', directed: 'false', value:2} },
-          { data: { source: 'v1', target: 'v5', directed: 'false', value:50} },
-          { data: { source: 'v2', target: 'v4', directed: 'false', value:60} },
-          { data: { source: 'v2', target: 'v6', directed: 'false', value:10} },
-          { data: { source: 'v3', target: 'v4', directed: 'false', value:35} },
-          { data: { source: 'v3', target: 'v7', directed: 'false', value:30} },
-          { data: { source: 'v4', target: 'v5', directed: 'false', value:15} },
-          { data: { source: 'v4', target: 'v7', directed: 'false', value:100} },
-          { data: { source: 'v5', target: 'v6', directed: 'false', value:20} },
-          { data: { source: 'v6', target: 'v7', directed: 'false', value:70} },
-          { data: { source: 'v6', target: 'v3', directed: 'false', value:15} }
-        ],
-        
-      }
+      elements: GraphData
     });
  
 
