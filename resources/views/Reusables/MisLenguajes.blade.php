@@ -40,7 +40,7 @@
                           </span>
                         </div>
                         <div class="col-8 col-md-10">
-                          <input type="range" class="slider" value="0" oninput="changeSliderDar(this.value,{{$LenId}})" id="slider_dar_{{$LenId}}" min="0" max="100" step="1">
+                          <input type="range" class="slider" value="0" oninput="changeSliderDar(this.value,{{$LenId}})" id="slider_dar_{{$LenId}}" min="0" max="50" step="1">
                         </div>
                         <div class="col-4 col-md-2">
                           <span for="" class="puntaje_item" id="span_valor_dar_{{$LenId}}">
@@ -103,7 +103,7 @@
                         </span>
                       </div>
                       <div class="col-8 col-md-10">
-                        <input type="range" class="slider" value="0" oninput="changeSliderRecibir(this.value,{{$LenId}})" id="slider_recibir_{{$LenId}}" min="0" max="100" step="1">
+                        <input type="range" class="slider" value="0" oninput="changeSliderRecibir(this.value,{{$LenId}})" id="slider_recibir_{{$LenId}}" min="0" max="50" step="1">
                       </div>
                       <div class="col-4 col-md-2">
                         <span for="" class="puntaje_item" id="span_valor_recibir_{{$LenId}}">
@@ -147,8 +147,8 @@
          
         <div class="ml-auto">
 
-            
-          <form action="{{route('user.GuardarMisLenguajes')}}" method="POST" name="formLenguajes">
+          
+          <form action="{{route('Flujo.GuardarMisLenguajes')}}" method="POST" name="formLenguajes">
             @csrf
 
             <input type="hidden" name="json_puntajes" id="json_puntajes">

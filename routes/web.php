@@ -15,20 +15,28 @@ Route::get('/', 'UserController@home')->name('user.home');
 
 Route::get('/login', 'UserController@verLogin')->name('user.verLogin'); //para desplegar la vista del Login
 
-Route::post('/registrarUsuario', 'UserController@registrarme')->name('user.registrarUsuario'); //para desplegar la vista del Login
 
 Route::post('/ingresar', 'UserController@logearse')->name('user.logearse'); //post
 
 Route::get('/cerrarSesion','UserController@cerrarSesion')->name('user.cerrarSesion');
 
-Route::get('/Config/MisLenguajes','CompatibilidadController@verEditarMisLenguajes')->name('user.MisLenguajes');
-Route::post('/MisLenguajes/Save','UserController@GuardarMisLenguajes')->name('user.GuardarMisLenguajes');
+Route::get('/Config/MisLenguajes','FlujoController@verEditarMisLenguajes')->name('user.MisLenguajes');
+Route::get('/Config/MisAmigos','AmistadController@verMisAmigos')->name('user.MisAmigos');
 
 
-Route::get('/Landing','CompatibilidadController@verLanding')->name('user.verLanding');
-Route::get('/Step1','UserController@verRegistrar')->name('user.verPaso1');
-Route::get('/Step2','UserController@verPaso2')->name('user.verPaso2');
-Route::get('/Step3','CompatibilidadController@verPaso3')->name('user.verPaso3');
+
+Route::get('/Landing','FlujoController@verLanding')->name('Flujo.VerLanding');
+Route::get('/Step1','FlujoController@verRegistrar')->name('Flujo.VerPaso1');
+Route::post('/Step1/Guardar', 'FlujoController@registrarme')->name('Flujo.Registrarme'); //para desplegar la vista del Login
+Route::get('/Step2','FlujoController@verPaso2')->name('Flujo.VerPaso2');
+Route::post('/Step2/Guardar','FlujoController@GuardarMisLenguajes')->name('Flujo.GuardarMisLenguajes');
+Route::get('/Step3','FlujoController@verPaso3')->name('Flujo.VerPaso3');
+
+Route::post('/Amigos/EnviarSolicitudAmistad','AmistadController@EnviarSolicitudAmistad')->name('user.EnviarSolicitudAmistad');
+Route::get('/Amigos/Inv_VerMisAmigos','AmistadController@inv_verMisAmigos')->name('user.inv_verMisAmigos');
+
+Route::post('/Amigos/UpdateSolicitudRecibida','AmistadController@UpdateSolicitudRecibida')->name('user.UpdateSolicitudRecibida');
+Route::post('/Amigos/CancelarSolicitud','AmistadController@CancelarSolicitud')->name('user.CancelarSolicitud');
 
 Route::get('/usuarios/consultarPorDNIYUsuario/{dni}','UsuarioController@consultarPorDNIYUsuario')->name('consultarPorDNIYUsuario');
 Route::get('/usuarios/verificarExistenciaUsuarioConDNI/{dni}','UsuarioController@verificarExistenciaUsuarioConDNI')->name('verificarExistenciaUsuarioConDNI');

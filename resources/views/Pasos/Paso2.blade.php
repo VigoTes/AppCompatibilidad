@@ -36,7 +36,7 @@
         Ingresa tus lenguajes de amor
       </div>
       
-
+      
       @include('Reusables.MisLenguajes')
 
 

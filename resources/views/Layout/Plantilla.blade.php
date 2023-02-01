@@ -215,14 +215,26 @@
     <nav class="navbar navbar-expand navbar-white navbar-light pl-4">
        
       @if($haySesionIniciada)
-          
-        <ul class="navbar-nav mr-auto"  >
+        <ul class="navbar-nav"  >
+          <a class="linkMenu" href="{{route('user.home')}}">
+            Home
+          </a>
+        </ul>
+        
+
+        <ul class="navbar-nav"  >
           <a class="linkMenu" href="{{route('user.MisLenguajes')}}">
             Mis Lenguajes
           </a>
-          
-          
         </ul>
+      
+        <ul class="navbar-nav mr-auto"  >
+          <a class="linkMenu" href="{{route('user.MisAmigos')}}">
+            Mis Amigos
+          </a>
+        </ul>
+      
+
       @endif
         
 

@@ -43,6 +43,9 @@ class Usuario extends Model
       return $this->verificado == 1; //si es admin
     }
 
+    public function getAmigos(){
+      return Amistad::getAmigosDeUsuario($this->codUsuario);
+    }
 
 
     public function getPuntuacionesLenguajes(){

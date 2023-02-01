@@ -25,7 +25,7 @@
         
         
         <div class="mr-auto ">
-          <a href="{{route('user.verPaso1')}}" class="btn btn-primary ">
+          <a href="{{route('Flujo.VerPaso1')}}" class="btn btn-primary ">
             Empezar
             
           </a>

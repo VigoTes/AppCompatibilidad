@@ -64,7 +64,7 @@
             
               ¿No tienes cuenta? 
 
-              <a href="{{route('user.verPaso1')}}">
+              <a href="{{route('Flujo.VerPaso1')}}">
                 <span class="linkRegistrarme">
                   Registrarme
                 </span>

@@ -39,7 +39,7 @@
       <div class="card mt-3">
         
         <div class="card-body">
-          <form action="{{route('user.registrarUsuario')}}" method="POST" name="formRegistrar">
+          <form action="{{route('Flujo.Registrarme')}}" method="POST" name="formRegistrar">
             @csrf
             <div class="row text-left" id="registerForm">
               
