@@ -87,7 +87,8 @@
       'width': 2,
       'line-color': 'data(color)',
       'opacity': 'data(opacity)',
-      label:'data(value)'
+      'label':'data(value)',
+      'line-lenght':5
     }
 
 
@@ -97,7 +98,8 @@
 
     var cy = window.cy = cytoscape({
       container: document.getElementById('cy'),
-
+      wheelSensitivity: 0.1,
+    
       layout: {
         name: 'avsdf',
         nodeSeparation: 120
